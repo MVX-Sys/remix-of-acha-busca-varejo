@@ -75,14 +75,14 @@ export function getGruposPersonalizacao(
   const cat = norm(categoriaNome);
   const tipo = norm(personalizacaoTipo);
 
-  // Peças de vestuário sem personalização
-  const semPersonalizacao = ["moletom", "canguru", "careca", "regata", "oversized", "oversize"];
   if (semPersonalizacao.some((t) => nome.includes(t) || tipo.includes(t))) {
     return [];
   }
 
-  if (nome.includes("bermuda") || tipo.includes("bermuda")) {
-    return [{ titulo: "Personalização", opcoes: OPCOES_BERMUDA }];
+  if (isBermudaPersonalizavel(produtoNome, categoriaNome, personalizacaoTipo)) {
+    // Bermudas não têm opções internas: apenas o botão "Personalizar Produto"
+    // com acréscimo fixo de R$5 (OPCAO_BERMUDA).
+    return [];
   }
 
   if (nome.includes("case") || nome.includes("estojo")) {
