@@ -721,7 +721,7 @@ function ProductPage() {
                 )}
 
                 <div
-                  className={`rounded-2xl border border-border bg-card p-4 ${gruposPerso.length === 0 ? "hidden" : ""}`}
+                  className={`rounded-2xl border border-border bg-card p-4 ${gruposPerso.length === 0 && !ehBermuda ? "hidden" : ""}`}
                 >
                   <label className="flex cursor-pointer items-start gap-3">
                     <input
