@@ -106,12 +106,23 @@ function ProductPage() {
       ),
     [p, categoriaAtual],
   );
-  const opcoesPersoSelecionadas = useMemo(
+  const ehBermuda = useMemo(
     () =>
-      gruposPerso
+      isBermudaPersonalizavel(
+        p?.nome,
+        categoriaAtual?.nome,
+        (p as any)?.personalizacao_tipo ?? null,
+      ),
+    [p, categoriaAtual],
+  );
+  const opcoesPersoSelecionadas = useMemo(
+    () => [
+      ...gruposPerso
         .flatMap((g) => g.opcoes)
         .filter((o) => persoSel.includes(o.id)),
-    [gruposPerso, persoSel],
+      ...(personalizado && ehBermuda ? [OPCAO_BERMUDA] : []),
+    ],
+    [gruposPerso, persoSel, personalizado, ehBermuda],
   );
   const adicionalPerso = opcoesPersoSelecionadas.reduce((s, o) => s + o.preco, 0);
 
