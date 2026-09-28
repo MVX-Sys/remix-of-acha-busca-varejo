@@ -737,9 +737,14 @@ function ProductPage() {
                         {categoriaAtual?.nome ? ` ${categoriaAtual.nome}` : ""} para produtos personalizados.
                       </span>
                       {ehBermuda && (
-                        <span className="mt-1 block text-xs text-muted-foreground">
-                          Personalizações são definidas em contato.
-                        </span>
+                        <>
+                          <span className="mt-1 block text-xs text-muted-foreground">
+                            Personalizações são definidas em contato.
+                          </span>
+                          <span className="mt-1 block text-xs font-semibold text-primary">
+                            + {brl(OPCAO_BERMUDA.preco)} por peça
+                          </span>
+                        </>
                       )}
                     </span>
                   </label>
