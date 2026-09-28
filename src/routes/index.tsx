@@ -348,7 +348,7 @@ function CategoriesSection({ categorias, produtos }: { categorias: Categoria[]; 
   };
 
   return (
-    <section className="py-24 md:py-32 overflow-hidden">
+    <section className="py-12 md:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-12 flex items-end justify-between md:mb-16">
           <h2 className="font-display text-4xl font-black uppercase tracking-tighter md:text-5xl lg:text-6xl">
