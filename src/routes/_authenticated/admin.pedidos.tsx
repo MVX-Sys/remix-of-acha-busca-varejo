@@ -298,12 +298,13 @@ function PedidosAdminPage() {
                 <th className="px-4 py-3 font-semibold">Itens</th>
                 <th className="px-4 py-3 font-semibold">Total</th>
                 <th className="px-4 py-3 font-semibold">Status</th>
+                <th className="px-4 py-3 font-semibold text-right">Ações</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {isLoading ? (
                 <tr>
-                  <td colSpan={6} className="py-20 text-center">
+                  <td colSpan={7} className="py-20 text-center">
                     <div className="flex flex-col items-center gap-2">
                       <Loader2 className="h-8 w-8 animate-spin text-primary" />
                       <p className="text-muted-foreground">Carregando pedidos...</p>
@@ -312,7 +313,7 @@ function PedidosAdminPage() {
                 </tr>
               ) : filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="py-20 text-center text-muted-foreground">
+                  <td colSpan={7} className="py-20 text-center text-muted-foreground">
                     Nenhum pedido encontrado.
                   </td>
                 </tr>
