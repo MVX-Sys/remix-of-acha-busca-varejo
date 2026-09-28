@@ -1,1 +1,0 @@
-REVOKE EXECUTE ON FUNCTION public.is_staff(uuid) FROM anon;

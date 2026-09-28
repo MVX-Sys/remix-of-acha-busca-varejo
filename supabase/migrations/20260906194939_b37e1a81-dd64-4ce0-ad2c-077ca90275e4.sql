@@ -1,1 +1,0 @@
-ALTER TABLE public.site_config ALTER COLUMN hero_title SET DEFAULT 'Atacado para todo o Brasil';
