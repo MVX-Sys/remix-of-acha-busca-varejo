@@ -241,9 +241,9 @@ interface ProductSectionProps {
 
 function ProductSection({ title, highlightIndex, products, subtitle, isPromo, emptyMessage }: ProductSectionProps) {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-12 md:py-32">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="mb-12 text-center md:mb-16">
+        <div className="mb-8 text-center md:mb-16">
           <h2 className="font-display text-4xl font-black uppercase tracking-tighter md:text-5xl lg:text-6xl">
             {title.map((word, i) => (
               <span key={i} className={i === highlightIndex ? "text-primary" : ""}>
