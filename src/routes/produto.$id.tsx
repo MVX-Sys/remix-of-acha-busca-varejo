@@ -725,6 +725,11 @@ function ProductPage() {
                         Pedido mínimo de {MIN_PECAS_PERSONALIZACAO} peças da categoria
                         {categoriaAtual?.nome ? ` ${categoriaAtual.nome}` : ""} para produtos personalizados.
                       </span>
+                      {gruposPerso.some((g) => g.opcoes.some((o) => o.id.startsWith("bermuda-"))) && (
+                        <span className="mt-1 block text-xs text-muted-foreground">
+                          Personalizações são definidas em contato.
+                        </span>
+                      )}
                     </span>
                   </label>
                   {personalizado && gruposPerso.length > 0 && (
