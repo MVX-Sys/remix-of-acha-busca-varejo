@@ -35,15 +35,31 @@ export const OPCOES_SANDALIA_REGULAGEM: OpcaoPersonalizacao[] = [
 
 // Bermudas: personalização única (+R$5), sem opções internas —
 // os detalhes são combinados em contato com o cliente.
-export const OPCOES_BERMUDA: OpcaoPersonalizacao[] = [
-  { id: "bermuda-personalizada", label: "Personalizada", preco: 5 },
-];
+export const OPCAO_BERMUDA: OpcaoPersonalizacao = {
+  id: "bermuda-personalizada",
+  label: "Personalizada",
+  preco: 5,
+};
 
 const norm = (s?: string | null) =>
   (s ?? "")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
+
+// Peças de vestuário sem personalização
+const semPersonalizacao = ["moletom", "canguru", "careca", "regata", "oversized", "oversize"];
+
+export function isBermudaPersonalizavel(
+  produtoNome?: string | null,
+  categoriaNome?: string | null,
+  personalizacaoTipo?: string | null,
+): boolean {
+  const nome = norm(produtoNome);
+  const tipo = norm(personalizacaoTipo);
+  if (semPersonalizacao.some((t) => nome.includes(t) || tipo.includes(t))) return false;
+  return nome.includes("bermuda") || tipo.includes("bermuda") || norm(categoriaNome).includes("bermuda");
+}
 
 export type GrupoPersonalizacao = {
   titulo: string;
