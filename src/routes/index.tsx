@@ -267,7 +267,7 @@ function ProductSection({ title, highlightIndex, products, subtitle, isPromo, em
 
             </div>
 
-            <div className="mt-16 text-center">
+            <div className="mt-10 text-center md:mt-16">
               <Link
                 to="/produtos"
                 className="inline-flex items-center gap-2 font-display text-sm font-black uppercase tracking-widest text-foreground transition-colors hover:text-primary"
