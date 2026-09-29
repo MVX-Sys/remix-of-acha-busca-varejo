@@ -803,7 +803,7 @@ export function ProductForm({ produtoId }: { produtoId?: string }) {
             )}
           </Card>
 
-          <PersonalizacoesCard value={persos} onChange={setPersos} />
+          <PersonalizacoesCard value={persos} onChange={changePersos} />
 
           <Card title="Visibilidade">
             <div className="space-y-2.5">
