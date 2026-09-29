@@ -69,7 +69,9 @@ function ProductPage() {
   const { data: p } = useSuspenseQuery({
     queryKey: ["produto", id],
     queryFn: () => getProdutoFn({ data: id }),
-    staleTime: 1000 * 30,
+    staleTime: 0,
+    refetchOnWindowFocus: true,
+    refetchInterval: 60_000,
   });
   const { data: categorias = [] } = useSuspenseQuery({
     queryKey: ["categorias"],
