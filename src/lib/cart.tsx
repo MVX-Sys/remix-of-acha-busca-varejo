@@ -227,8 +227,23 @@ export function CartProvider({ children }: { children: ReactNode }) {
   );
 }
 
+const FALLBACK: CartCtx = {
+  items: [],
+  open: false,
+  setOpen: () => {},
+  add: () => {},
+  setQty: () => {},
+  remove: () => {},
+  clear: () => {},
+  total: 0,
+  count: 0,
+};
+
 export function useCart() {
   const ctx = useContext(Ctx);
-  if (!ctx) throw new Error("useCart must be used within CartProvider");
+  if (!ctx) {
+    console.warn("useCart usado fora do CartProvider; usando carrinho vazio.");
+    return FALLBACK;
+  }
   return ctx;
 }
