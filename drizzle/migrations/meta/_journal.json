@@ -15,6 +15,13 @@
       "when": 1790721673155,
       "tag": "0001_produtos_personalizacoes",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790724933694,
+      "tag": "0002_backfill_personalizacoes_produtos_existentes",
+      "breakpoints": true
     }
   ]
 }
