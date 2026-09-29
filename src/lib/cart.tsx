@@ -95,7 +95,9 @@ type CartCtx = {
   count: number;
 };
 
-const Ctx = createContext<CartCtx | null>(null);
+// Mantém o mesmo contexto entre recarregamentos de código (evita tela branca após edições)
+const g = globalThis as unknown as { __cartCtx?: React.Context<CartCtx | null> };
+const Ctx = g.__cartCtx ?? (g.__cartCtx = createContext<CartCtx | null>(null));
 const STORAGE_KEY = "achaebusca_cart_v1";
 
 export function CartProvider({ children }: { children: ReactNode }) {
@@ -225,8 +227,23 @@ export function CartProvider({ children }: { children: ReactNode }) {
   );
 }
 
+const FALLBACK: CartCtx = {
+  items: [],
+  open: false,
+  setOpen: () => {},
+  add: () => {},
+  setQty: () => {},
+  remove: () => {},
+  clear: () => {},
+  total: 0,
+  count: 0,
+};
+
 export function useCart() {
   const ctx = useContext(Ctx);
-  if (!ctx) throw new Error("useCart must be used within CartProvider");
+  if (!ctx) {
+    console.warn("useCart usado fora do CartProvider; usando carrinho vazio.");
+    return FALLBACK;
+  }
   return ctx;
 }
