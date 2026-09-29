@@ -7,7 +7,18 @@ import { getImageUrl } from "@/lib/storage";
 import { Trash2, Plus, Upload, X } from "lucide-react";
 import { toast } from "sonner";
 import { logAudit } from "@/lib/audit";
-import { MODELOS_PERSONALIZACAO, parsePersonalizacoes, type OpcaoProduto } from "@/lib/personalizacao";
+import { MODELOS_PERSONALIZACAO, parsePersonalizacoes, getGruposPersonalizacao, isBermudaPersonalizavel, OPCAO_BERMUDA, type OpcaoProduto } from "@/lib/personalizacao";
+
+// Sugere personalizações a partir do nome e da categoria (regras antigas),
+// usadas como ponto de partida na criação de um produto novo.
+function sugestoesPersonalizacao(nome: string, categoriaNome: string): OpcaoProduto[] {
+  if (isBermudaPersonalizavel(nome, categoriaNome, null)) {
+    return [{ ...OPCAO_BERMUDA, grupo: "Personalização" }];
+  }
+  return getGruposPersonalizacao(nome, categoriaNome, null).flatMap((g) =>
+    g.opcoes.map((o) => ({ ...o, grupo: g.titulo })),
+  );
+}
 
 type VarRow = {
   id?: string;
