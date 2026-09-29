@@ -95,7 +95,9 @@ type CartCtx = {
   count: number;
 };
 
-const Ctx = createContext<CartCtx | null>(null);
+// Mantém o mesmo contexto entre recarregamentos de código (evita tela branca após edições)
+const g = globalThis as unknown as { __cartCtx?: React.Context<CartCtx | null> };
+const Ctx = g.__cartCtx ?? (g.__cartCtx = createContext<CartCtx | null>(null));
 const STORAGE_KEY = "achaebusca_cart_v1";
 
 export function CartProvider({ children }: { children: ReactNode }) {
