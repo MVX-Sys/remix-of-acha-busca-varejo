@@ -141,6 +141,20 @@ export function ProductForm({ produtoId }: { produtoId?: string }) {
   const [novaCorNome, setNovaCorNome] = useState("");
   const [novaCorHex, setNovaCorHex] = useState("#000000");
   const [hexTouched, setHexTouched] = useState(false);
+  const [persosTouched, setPersosTouched] = useState(false);
+
+  // Em produto novo, sugere personalizações conforme nome/categoria,
+  // até o usuário editar a lista manualmente.
+  const categoriaNome = categorias.find((c: any) => c.id === categoriaId)?.nome ?? "";
+  useEffect(() => {
+    if (produtoId || persosTouched) return;
+    setPersos(sugestoesPersonalizacao(nome, categoriaNome));
+  }, [produtoId, persosTouched, nome, categoriaNome]);
+
+  const changePersos = (v: OpcaoProduto[]) => {
+    setPersosTouched(true);
+    setPersos(v);
+  };
 
   useEffect(() => {
     if (!existing) return;
