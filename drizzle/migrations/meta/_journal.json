@@ -22,6 +22,13 @@
       "when": 1790724933694,
       "tag": "0002_backfill_personalizacoes_produtos_existentes",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1790787166478,
+      "tag": "0003_estoque_historico",
+      "breakpoints": true
     }
   ]
 }
