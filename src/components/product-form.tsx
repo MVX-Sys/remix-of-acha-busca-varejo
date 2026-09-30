@@ -390,7 +390,7 @@ export function ProductForm({ produtoId }: { produtoId?: string }) {
       };
       if (pid) {
         const { error } = await supabase.from("produtos").update(payload).eq("id", pid);
-        if (error) throw error;
+        if (error) throw new Error("Erro ao salvar produto e personalizações: " + error.message);
       } else {
         const { data, error } = await supabase
           .from("produtos")
