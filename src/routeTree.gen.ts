@@ -17,6 +17,7 @@ import { Route as DadosContaRouteImport } from './routes/dados-conta'
 import { Route as PedidosRouteImport } from './routes/pedidos'
 import { Route as PerfilRouteImport } from './routes/perfil'
 import { Route as ProdutosRouteImport } from './routes/produtos'
+import { Route as RecuperarSenhaRouteImport } from './routes/recuperar-senha'
 import { Route as ReposicoesRouteImport } from './routes/reposicoes'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as ProdutoIdRouteImport } from './routes/produto.$id'
@@ -73,6 +74,11 @@ const PerfilRoute = PerfilRouteImport.update({
 const ProdutosRoute = ProdutosRouteImport.update({
   id: '/produtos',
   path: '/produtos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecuperarSenhaRoute = RecuperarSenhaRouteImport.update({
+  id: '/recuperar-senha',
+  path: '/recuperar-senha',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReposicoesRoute = ReposicoesRouteImport.update({
@@ -188,6 +194,7 @@ export interface FileRoutesByFullPath {
   '/pedidos': typeof PedidosRoute
   '/perfil': typeof PerfilRoute
   '/produtos': typeof ProdutosRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
   '/reposicoes': typeof ReposicoesRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/produto/$id': typeof ProdutoIdRoute
@@ -215,6 +222,7 @@ export interface FileRoutesByTo {
   '/pedidos': typeof PedidosRoute
   '/perfil': typeof PerfilRoute
   '/produtos': typeof ProdutosRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
   '/reposicoes': typeof ReposicoesRoute
   '/produto/$id': typeof ProdutoIdRoute
   '/admin/atendentes': typeof AuthenticatedAdminAtendentesRoute
@@ -243,6 +251,7 @@ export interface FileRoutesById {
   '/pedidos': typeof PedidosRoute
   '/perfil': typeof PerfilRoute
   '/produtos': typeof ProdutosRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
   '/reposicoes': typeof ReposicoesRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/produto/$id': typeof ProdutoIdRoute
@@ -272,6 +281,7 @@ export interface FileRouteTypes {
     | '/pedidos'
     | '/perfil'
     | '/produtos'
+    | '/recuperar-senha'
     | '/reposicoes'
     | '/admin'
     | '/produto/$id'
@@ -299,6 +309,7 @@ export interface FileRouteTypes {
     | '/pedidos'
     | '/perfil'
     | '/produtos'
+    | '/recuperar-senha'
     | '/reposicoes'
     | '/produto/$id'
     | '/admin/atendentes'
@@ -326,6 +337,7 @@ export interface FileRouteTypes {
     | '/pedidos'
     | '/perfil'
     | '/produtos'
+    | '/recuperar-senha'
     | '/reposicoes'
     | '/_authenticated/admin'
     | '/produto/$id'
@@ -355,6 +367,7 @@ export interface RootRouteChildren {
   PedidosRoute: typeof PedidosRoute
   PerfilRoute: typeof PerfilRoute
   ProdutosRoute: typeof ProdutosRoute
+  RecuperarSenhaRoute: typeof RecuperarSenhaRoute
   ReposicoesRoute: typeof ReposicoesRoute
   ProdutoIdRoute: typeof ProdutoIdRoute
 }
@@ -415,6 +428,13 @@ declare module '@tanstack/react-router' {
       path: '/produtos'
       fullPath: '/produtos'
       preLoaderRoute: typeof ProdutosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recuperar-senha': {
+      id: '/recuperar-senha'
+      path: '/recuperar-senha'
+      fullPath: '/recuperar-senha'
+      preLoaderRoute: typeof RecuperarSenhaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reposicoes': {
@@ -605,6 +625,7 @@ const rootRouteChildren: RootRouteChildren = {
   PedidosRoute: PedidosRoute,
   PerfilRoute: PerfilRoute,
   ProdutosRoute: ProdutosRoute,
+  RecuperarSenhaRoute: RecuperarSenhaRoute,
   ReposicoesRoute: ReposicoesRoute,
   ProdutoIdRoute: ProdutoIdRoute,
 }
