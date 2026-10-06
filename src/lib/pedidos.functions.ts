@@ -16,6 +16,7 @@ export type PedidoItem = {
     nome: string;
     cor: string;
     tamanho: string;
+    personalizacoes?: { id: string; label: string; preco: number }[];
   } | null;
 };
 
@@ -31,6 +32,9 @@ export type PedidoRow = {
   forma_pagamento: string | null;
   forma_envio: string | null;
   observacoes: string | null;
+  endereco?: { formaEntrega?: string } | null;
+  cupom_codigo?: string | null;
+  desconto_cupom?: number | null;
   itens?: PedidoItem[];
   atendente?: { nome: string } | null;
 };
