@@ -200,36 +200,6 @@ export type Database = {
         }
         Relationships: []
       }
-      gestaoclick_sync_log: {
-        Row: {
-          criado_em: string
-          estoque: number | null
-          gestaoclick_id: string
-          id: string
-          mensagem: string | null
-          nome: string | null
-          ok: boolean
-        }
-        Insert: {
-          criado_em?: string
-          estoque?: number | null
-          gestaoclick_id: string
-          id?: string
-          mensagem?: string | null
-          nome?: string | null
-          ok?: boolean
-        }
-        Update: {
-          criado_em?: string
-          estoque?: number | null
-          gestaoclick_id?: string
-          id?: string
-          mensagem?: string | null
-          nome?: string | null
-          ok?: boolean
-        }
-        Relationships: []
-      }
       hero_slides: {
         Row: {
           ativo: boolean
@@ -412,27 +382,6 @@ export type Database = {
           },
         ]
       }
-      personalizacao_presets: {
-        Row: {
-          criado_em: string
-          id: string
-          nome: string
-          opcoes: Json
-        }
-        Insert: {
-          criado_em?: string
-          id?: string
-          nome: string
-          opcoes?: Json
-        }
-        Update: {
-          criado_em?: string
-          id?: string
-          nome?: string
-          opcoes?: Json
-        }
-        Relationships: []
-      }
       produtos: {
         Row: {
           ativo: boolean
@@ -440,7 +389,6 @@ export type Database = {
           codigo_base: string
           criado_em: string
           descricao: string | null
-          gestaoclick_id: string | null
           hash_id: string | null
           id: string
           marca: string | null
@@ -460,7 +408,6 @@ export type Database = {
           codigo_base: string
           criado_em?: string
           descricao?: string | null
-          gestaoclick_id?: string | null
           hash_id?: string | null
           id?: string
           marca?: string | null
@@ -480,7 +427,6 @@ export type Database = {
           codigo_base?: string
           criado_em?: string
           descricao?: string | null
-          gestaoclick_id?: string | null
           hash_id?: string | null
           id?: string
           marca?: string | null
