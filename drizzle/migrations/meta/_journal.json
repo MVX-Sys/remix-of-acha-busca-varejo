@@ -71,6 +71,20 @@
       "when": 1791240682464,
       "tag": "0009_site_config_manutencao",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1791300578276,
+      "tag": "0010_personalizacao_presets",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1791384171276,
+      "tag": "0011_gestaoclick_link",
+      "breakpoints": true
     }
   ]
 }
